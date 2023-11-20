@@ -1,0 +1,33 @@
+﻿<Window
+    x:Class="CommunityToolkit.Mvvm.Sample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CommunityToolkit.Mvvm.Sample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:CommunityToolkit.Mvvm.Sample.Model"
+    xmlns:viewmodels="clr-namespace:CommunityToolkit.Mvvm.Sample.ViewModels"
+    Title="CommunityToolkit.Mvvm.Sample"
+    Width="1200"
+    Height="500"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type models:TreeNode}" ItemsSource="{Binding Children}">
+            <TextBlock Text="{Binding Name}" />
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <Border>
+            <TreeView
+                Name="treeView"
+                ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+                ItemsSource="{Binding Tyeps}" />
+        </Border>
+    </Grid>
+</Window>
